@@ -1,23 +1,35 @@
-import React, { Component } from 'react';
-import './app.css';
-import ReactImage from './react.png';
+import React from "react";
 
-export default class App extends Component {
-  state = { username: null };
+import Calendar from "./components/Calendar.jsx";
+import DetailPane from "./components/DetailPane.jsx";
+import Paper from "@material-ui/core/Paper";
+import "./App.css";
 
-  componentDidMount() {
-    fetch('/api/getUsername')
-      .then(res => res.json())
-      .then(user => this.setState({ username: user.username }));
-  }
-
+class App extends React.Component {
   render() {
-    const { username } = this.state;
     return (
-      <div>
-        {username ? <h1>{`Hello ${username}`}</h1> : <h1>Loading.. please wait!</h1>}
-        <img src={ReactImage} alt="react" />
+      <div className="App">
+        <header>
+          <div id="logo">
+            <span className="icon">date_range</span>
+            <span>
+              react<b>calendar</b>
+            </span>
+          </div>
+        </header>
+        <main>
+          <Calendar />
+          <DetailPane />
+          <Paper>Hello</Paper>
+          <Paper>World</Paper>
+          <Paper>My</Paper>
+          <Paper>Name</Paper>
+          <Paper>Is</Paper>
+          <Paper>Spencer</Paper>
+        </main>
       </div>
     );
   }
 }
+
+export default App;
